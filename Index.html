@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Tracker</title>
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .circle {
+            width: 60px; /* Increased size */
+            height: 60px; /* Increased size */
+            border-radius: 50%;
+            background-color: #ccc;
+            margin: 10px; /* Increased margin */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px; /* Adjust font size for better visibility */
+        }
+        .completed {
+            background-color: #4caf50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="number" id="numQuestions" placeholder="Enter number of questions">
+        <button onclick="generateCircles()">Generate Circles</button>
+    </div>
+    <div class="container" id="circleContainer"></div>
+
+    <script>
+        function generateCircles() {
+            const container = document.getElementById('circleContainer');
+            container.innerHTML = ''; // Clear existing circles
+            const numQuestions = document.getElementById('numQuestions').value;
+
+            for (let i = 1; i <= numQuestions; i++) {
+                const circle = document.createElement('div');
+                circle.className = 'circle';
+                circle.textContent = i;
+                circle.onclick = function() {
+                    circle.classList.toggle('completed');
+                };
+                container.appendChild(circle);
+            }
+        }
+    </script>
+</body>
+</html>
